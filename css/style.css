@@ -60,7 +60,7 @@ html {
     background-color: rgba(0,0,0,0.1);
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to bottom, rgba(125,185,232,1) 0%,rgba(41,137,216,1) 48%,rgba(27,110,173,1) 49%,rgba(65,132,191,1) 100%);
+    background:  linear-gradient(to bottom, rgba(255,238,0,1) 0%,rgba(255,195,0,1) 49%,rgba(255,170,35,1) 53%,rgba(209,161,29,1) 100%);
 }
 
 .ui-elem__spin i {
@@ -118,7 +118,7 @@ html {
 .ui-elem__bet {
     display: flex;
     flex-direction: row;
-    background: #2989D8;
+    background: #ffcc15;
     flex: 0 0 150px;
     color: white;
     justify-content: space-between;
@@ -170,7 +170,7 @@ justify-content: center;
 align-self: center;
 flex-direction: column;
 width: 100%;
-background: linear-gradient(to bottom, rgba(125,185,232,1) 0%,rgba(41,137,216,1) 48%,rgba(27,110,173,1) 49%,rgba(65,132,191,1) 100%);
+background:  linear-gradient(to bottom, rgba(255,238,0,1) 0%,rgba(255,195,0,1) 49%,rgba(255,170,35,1) 53%,rgba(209,161,29,1) 100%);
 cursor: pointer;
 position: relative;
 }
@@ -211,7 +211,7 @@ position: relative;
 .ui-elem__lines {
     display: flex;
     flex-direction: row;
-    background: #2989D8;
+    background: #ffcc15;
     color: #fff;
     flex: 1;
     margin-bottom: 2px;
@@ -229,7 +229,7 @@ padding: 0 10px;
 .ui-elem__balance {
     display: flex;
     flex-direction: row;
-    background: #2989D8;
+    background: #ffcc15;
     color: #fff;
     flex: 1;
 }
