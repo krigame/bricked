@@ -170,8 +170,10 @@ function onImagesLoaded() {
 						target_temp = target_temp.toString();
 						this.target_temp[reel] = target_temp.substr(0, target_temp.length - 1) + cherryseven_value[getRandom(cherryseven_value.length)];
 						if (reel == 2) {
-							while (this.target_temp[reel].slice(-1)  == this.target_temp[0].slice(-1) || this.target_temp[reel].slice(-1)  == this.target_temp[1].slice(-1) ) {
-								this.target_temp[reel] = target_temp.substr(0, target_temp.length - 1) + cherryseven_value[getRandom(cherryseven_value.length)];
+							if(seven_value.includes(this.target_temp[0].slice(-1)) && seven_value.includes(this.target_temp[1].slice(-1)) )	{					
+								this.target_temp[reel] = target_temp.substr(0, target_temp.length - 1) + cherry_value[getRandom(cherry_value.length)];
+							} else if (cherry_value.includes(this.target_temp[0].slice(-1)) && cherry_value.includes(this.target_temp[1].slice(-1)) )	{					
+								this.target_temp[reel] = target_temp.substr(0, target_temp.length - 1) + seven_value[getRandom(seven_value.length)];
 							}
 						}
 						this.target[reel] = Number(this.target_temp[reel]) + reel_value[fix_reel];
@@ -251,8 +253,7 @@ function onImagesLoaded() {
 	// Check win conditions
 	function check_win(reels) {
 		// 2bar = 0;  1bar = 1; 3bar = 2; Cherry = 3; Seven = 4
-		var any_bar = [0, 1, 2], cherrys_sevens = [3, 4], any_bar_top = [-1, 0, 3];
-
+		var any_bar = [0, 1, 2], cherrys_sevens = [3, 4], any_bar_top = [-1, 0, 3], cherrys_sevens_top = [2, 3];
 		if (reels[0] % 1 == reels[1] % 1 && reels[1] % 1 == reels[2] % 1) {
 			// reels are aligned; check further
 
@@ -344,7 +345,7 @@ function onImagesLoaded() {
 					// any combination of cherries and sevens bottom
 					document.getElementById('cherry-sevens').classList.add('winning');
 					return 75;
-				} else if (cherrys_sevens.includes(reel0 - 1) && cherrys_sevens.includes(reel1 - 1) && cherrys_sevens.includes(reel2 - 1)) {
+				} else if (cherrys_sevens_top.includes(reel0) && cherrys_sevens_top.includes(reel1) && cherrys_sevens_top.includes(reel2)) {
 					// any combination of cherries and sevens top
 					document.getElementById('cherry-sevens').classList.add('winning');
 					return 75;
