@@ -1,0 +1,19 @@
+{
+  "name": "pixi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --watch --server --files '*.js' --serveStatic './'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pixi.js": "^5.0.0-rc.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  }
+}

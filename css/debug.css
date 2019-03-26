@@ -1,0 +1,154 @@
+.debug-wrap {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+}
+
+.debug__toggle {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: absolute;
+    border: 1px solid #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    background: #fff;
+    opacity: 0.8;
+    color: #777;
+    transition: 0.1s all ease-in-out;
+    top: -45px;
+    height: 50px;
+    display: flex;
+    line-height: 30px;
+}
+
+.debug__toggle i {
+    font-size: 30px;
+    padding: 0 5px 0 0 ;
+}
+
+.debug__toggle:hover {
+    color: #2196F3;
+    opacity: 1;
+}
+
+
+.debug {
+    padding: 25px;
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    background: #fff;
+    bottom: -270px;
+    height: 270px;
+    transition: 0.3s all ease-in-out;
+}
+
+.debug.open {
+    bottom: 0;
+}
+
+.enable-debug {
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.settings-wrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #888;
+    margin-left: 10px;
+}
+
+.section-row {
+    flex-direction: row;
+}
+
+.sub-section {
+    margin-left: 20px;
+}
+
+.section:first-child, .sub-section:first-child {
+    margin-left: 0;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

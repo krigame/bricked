@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Some Bricks</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/debug.css">
+
+	<script type="text/javascript" src="node_modules/pixi.js/dist/pixi.min.js"></script>
+</head>
+
+<body>
+	<div class="viewport-wrap">
+		<div class="viewport">
+			<div id="container" class="game-container">
+				<div class="paytable">
+					<div class="paytable__title">Paytable</div>
+					<div class="paytable__table">
+						<div class="paytable__content">
+							<div id="cherry-bottom" class="paytable__row">
+								<span class="pay-type"><img src="img/w-cherry.png">3x Bottom</span>
+								<span>4000</span>
+							</div>
+							<div id="cherry-top" class="paytable__row">
+								<span class="pay-type"><img src="img/w-cherry.png">3x Top</span>
+								<span>2000</span>
+							</div>
+							<div id="cherry-mid" class="paytable__row">
+								<span class="pay-type"><img src="img/w-cherry.png">3x Middle</span>
+								<span>1000</span>
+							</div>
+							<div id="sevens" class="paytable__row">
+								<span class="pay-type"><img src="img/w-seven.png">3x </span>
+								<span>150</span>
+							</div>
+							<div id="cherry-sevens" class="paytable__row">
+								<span class="pay-type"><img src="img/w-cherry-seven.png">Any</span>
+								<span>75</span>
+							</div>
+							<div id="3bar" class="paytable__row">
+								<span class="pay-type"><img src="img/w-3bar.png">3x</span>
+								<span>50</span>
+							</div>
+							<div id="2bar" class="paytable__row">
+								<span class="pay-type"><img src="img/w-2bar.png">3x</span>
+								<span>20</span>
+							</div>
+							<div id="1bar" class="paytable__row">
+								<span class="pay-type"><img src="img/w-1bar.png">3x</span>
+								<span>10</span>
+							</div>
+							<div id="any-bar" class="paytable__row">
+								<span class="pay-type"><img src="img/w-bar-any.png">Any</span>
+								<span>5</span>
+							</div>
+						</div>
+					</div>
+					<small>* payout per bet coin</small>
+				</div>
+
+			</div>
+			<div class="ui-elem">
+
+				<div id="spin" class="ui-elem__spin">
+					<i class="fa fa-repeat"></i>
+				</div>
+
+				<div class="ui-elem__win">
+					<span class="win-title">Win</span>
+					<span id="win-amount" class="win-amount"></span>
+				</div>
+
+				<div class="ui-elem__bet">
+					<div class="bet-text">
+						<span class="bet-title">Bet</span>
+						<span id="bet" class="bet-amount bet-js">1</span>
+					</div>
+					<div class="bet-controls">
+						<span class="bet-btn bet-plus" onclick="betPlus()">+</span>
+						<span class="bet-btn bet-minus" onclick="betMinus()">-</span>
+					</div>
+				</div>
+
+				<div class="lines-balance">
+					<div class="ui-elem__lines">
+						<div class="lines-text">
+							<span>Lines</span>
+							<span>3</span>
+						</div>
+					</div>
+
+					<div class="ui-elem__balance">
+						<div class="balance-text">
+							<span>Balance</span>
+							<span id="balance">5000</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="debug-wrap">
+		<div class="debug">
+			<div id="debug-toggle" class="debug__toggle">
+				<i class="fa fa-cog"></i> Debug
+			</div>
+
+			<div class="debug__content">
+				<div class="enable-debug">
+					Enable Debug mode
+					<label class="switch">
+						<input id="debug-enable" type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<form id="settings">
+					<fieldset disabled="disabled">
+						<div class="settings-wrap">
+							<div class="section">
+								<div class="section-title">Manually change balance</div>
+								<div class="debug__change-balance">
+									<input id="new-balance-input" type="text" placeholder="Enter new balance amount" />
+									<button id="new-balance" onclick="event.preventDefault(); changeBalance()"
+										class="debug-btn">Change</button>
+								</div>
+							</div>
+
+							<div class="section section-row">
+								<div class="sub-section">
+									<div class="section-title">Select winning reel</div>
+									<input id="fwr1" type="radio" value="top" name="fix-win-reel" checked>
+									<label for="fwr1">Top</label>
+									<br>
+									<input id="fwr2" type="radio" value="mid" name="fix-win-reel">
+									<label for="fwr2">Middle</label>
+									<br>
+									<input id="fwr3" type="radio" value="bottom" name="fix-win-reel">
+									<label for="fwr3">Bottom</label>
+								</div>
+								<div class="sub-section">
+										<div class="section-title">Select win combination</div>
+										<input id="fwp1" type="radio" value="cherry" name="fix-win-pay" checked>
+										<label for="fwp1">Cherries</label>
+										<br>
+										<input id="fwp2" type="radio" value="seven" name="fix-win-pay">
+										<label for="fwp2">Sevens</label>
+										<br>
+										<input id="fwp3" type="radio" value="cherryseven" name="fix-win-pay">
+										<label for="fwp3">Cherry-seven any</label>
+										<br>
+										<input id="fwp4" type="radio" value="3bar" name="fix-win-pay">
+										<label for="fwp4">3bar</label>
+										<br>
+										<input id="fwp5" type="radio" value="2bar" name="fix-win-pay">
+										<label for="fwp5">2bar</label>
+										<br>
+										<input id="fwp6" type="radio" value="1bar" name="fix-win-pay">
+										<label for="fwp6">1bar</label>
+										<br>
+										<input id="fwp7" type="radio" value="barany" name="fix-win-pay">
+										<label for="fwp7">Bars any</label>
+									</div>
+
+							</div>
+						</div>
+
+
+
+
+					</fieldset>
+				</form>
+
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="scripts.js"></script>
+</body>
+
+</html>

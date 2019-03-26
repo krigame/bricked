@@ -1,0 +1,322 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+    background: #222;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+.viewport-wrap {
+    position: relative;
+    z-index: 3;
+}
+
+.viewport {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.game-container, .game-container canvas {
+    display: block;
+    position: relative;
+}
+
+
+.ui-elem {
+    width: 800px;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.ui-elem__spin {
+    flex: 0 0 150px;
+    margin-left: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(125,185,232,1) 0%,rgba(41,137,216,1) 48%,rgba(27,110,173,1) 49%,rgba(65,132,191,1) 100%);
+}
+
+.ui-elem__spin i {
+    font-size: 60px;
+    align-self: center;
+}
+
+.ui-elem__spin:hover:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(white,transparent); 
+    opacity: 0.3;
+}
+
+.ui-elem__spin:active:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(black,transparent); 
+    opacity: 0.3;
+}
+
+
+.ui-elem__win {
+    flex: 1;
+    color: #555;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: #ddd;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin-left: 2px;
+    font-weight: 700;
+}
+
+.win-title {
+    font-size: 20px;
+}
+
+.win-amount {
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 400;
+}
+
+
+.ui-elem__bet {
+    display: flex;
+    flex-direction: row;
+    background: #2989D8;
+    flex: 0 0 150px;
+    color: white;
+    justify-content: space-between;
+    margin-left: 2px;
+}
+
+.bet-title {
+    font-size: 20px;
+    text-align: left;
+    display: block;
+    white-space: nowrap;
+    padding: 5px 0 0 10px;
+}
+
+.bet-amount {
+    align-self: baseline;
+    line-height: 0.9em;
+    font-size: 50px;
+    height: 63px;
+    padding: 5px 0 0 10px;
+}
+
+.bet-text {
+    text-transform: uppercase;
+}
+
+.bet-controls {
+    flex: 0 0 30px;
+display: flex;
+flex-direction: column;
+text-align: center;
+justify-content: center;
+}
+
+.bet-plus {
+    height: 50%;
+    align-self: center;
+}
+
+.bet-minus {
+    height: 50%;
+}
+
+.bet-btn {
+    height: 50%;
+align-self: center;
+display: flex;
+justify-content: center;
+align-self: center;
+flex-direction: column;
+width: 100%;
+background: linear-gradient(to bottom, rgba(125,185,232,1) 0%,rgba(41,137,216,1) 48%,rgba(27,110,173,1) 49%,rgba(65,132,191,1) 100%);
+cursor: pointer;
+position: relative;
+}
+
+.bet-btn:hover:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(white,transparent); 
+    opacity: 0.3;
+}
+
+.bet-btn:active:before, .bet-btn[disabled] {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(black,transparent); 
+    opacity: 0.3;
+}
+
+
+.lines-balance {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 170px;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+
+
+.ui-elem__lines {
+    display: flex;
+    flex-direction: row;
+    background: #2989D8;
+    color: #fff;
+    flex: 1;
+    margin-bottom: 2px;
+}
+
+.lines-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+align-self: center;
+padding: 0 10px;
+}
+
+.ui-elem__balance {
+    display: flex;
+    flex-direction: row;
+    background: #2989D8;
+    color: #fff;
+    flex: 1;
+}
+
+.balance-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+align-self: center;
+padding: 0 10px;
+}
+
+
+.paytable {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 120px;
+    z-index: 2;
+}
+
+.paytable__title {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0px 0px 15px yellow;
+}
+
+.paytable__content {
+    flex-direction: column;
+    display: flex;
+}
+
+.paytable__row {
+    border-bottom: 1px solid #fff;
+    height: 40px;
+    position: relative;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    padding: 0 10px 0 0; 
+}
+
+.paytable__row:before  {
+    content: "";
+    position: absolute;
+    background: rgba(251, 255, 0, 0.33);
+    width: 0;
+    height: 100%;
+    transition: 0.3s all ease-in-out;
+}
+
+.paytable__row span {
+    align-self: center;
+}
+
+.pay-type {
+    padding-left: 50px;
+    padding-right: 30px;
+    position: relative;
+}
+
+.pay-type img {
+    height: 30px;
+    width: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+.winning span{
+    color: yellow;
+}
+
+.winning:before {
+    content: "";
+    position: absolute;
+    background: rgba(251, 255, 0, 0.33);
+    width: 100%;
+    height: 100%;
+    transition: 0.3s all ease-in-out;
+}
+
+
+
